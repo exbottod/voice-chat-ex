@@ -23,7 +23,12 @@ jobs:
           java-version: '17'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+  uses: android-actions/setup-android@v3
+  with:
+    # Paksa unduh & instal versi cmdline-tools yang terbaru (short version 22.0)
+    cmdline-tools-version: 15859902
+    # Hindari paket 'tools' usang yang sudah dihapus Google
+    packages: 'platform-tools'
 
       - name: Cache Gradle packages
         uses: actions/cache@v4
