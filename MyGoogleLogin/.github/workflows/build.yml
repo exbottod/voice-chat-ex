@@ -22,24 +22,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK
-  uses: android-actions/setup-android@v3
-  with:
-    # Paksa unduh & instal versi cmdline-tools yang terbaru (short version 22.0)
-    cmdline-tools-version: 15859902
-    # Hindari paket 'tools' usang yang sudah dihapus Google
-    packages: 'platform-tools'
-
-      - name: Cache Gradle packages
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
